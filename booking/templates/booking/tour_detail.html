@@ -1,0 +1,22 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Tour Details</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Tour ID: {{ tour.id }}</li>
+        <li class="list-group-item">Travel Date: {{ tour.travel_date }}</li>
+        <li class="list-group-item">Return Date: {{ tour.return_date }}</li>
+        <li class="list-group-item">Accommodation Details: {{ tour.accommodation_details }}</li>
+        <li class="list-group-item">Price: ${{ tour.price|floatformat:2 }}</li>
+        <li class="list-group-item">Capacity: {{ tour.capacity }}</li>
+        {% if not tour.is_cancelled %}
+        <li class="list-group-item">
+            <a href="{% url 'cancel_tour' tour.id %}" class="btn btn-danger">Cancel Tour</a>
+        </li>
+        {% else %}
+        <li class="list-group-item text-danger">Tour Cancelled</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

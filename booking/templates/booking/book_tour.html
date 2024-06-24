@@ -1,0 +1,19 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Book Tour</h2>
+    <form action="{% url 'book_tour' tour.id %}" method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Confirm your booking</h5>
+                <p class="card-text">
+                    Booking for: Tour from {{ tour.travel_date|date:"Y-m-d" }} to {{ tour.return_date|date:"Y-m-d" }}.
+                </p>
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

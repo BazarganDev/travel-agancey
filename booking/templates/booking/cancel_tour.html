@@ -1,0 +1,13 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="text-center mt-4">
+    <img src="https://images.unsplash.com/photo-1558285549-2a06f9a5fe65?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid" alt="Travel Image" style="max-height: 500px; object-fit: cover; border-radius: 20px;">
+    <h1 class="mt-4" style="font-weight: bold;">Discover the World with Us</h1>
+    <p class="lead">Book your train and flight tickets or register for a tour with us today!</p>
+    <div class="mt-4">
+        <a href="{% url 'list_tickets' %}" class="btn btn-primary btn-lg mx-2">View Tickets</a>
+        <a href="{% url 'list_tours' %}" class="btn btn-primary btn-lg mx-2">View Tours</a>
+    </div>
+</div>
+{% endblock %}

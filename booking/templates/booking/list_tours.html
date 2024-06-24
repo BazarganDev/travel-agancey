@@ -1,0 +1,17 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="container mt-3 mb-5">
+    <h2>Available Tours</h2>
+    <div class="list-group">
+        {% for tour in tours %}
+        <a href="{% url 'book_tour' tour.id %}" class="list-group-item list-group-item-action">
+            Tour from {{ tour.travel_date|date:"Y-m-d" }} to {{ tour.return_date|date:"Y-m-d" }}
+            <span class="badge bg-secondary float-end">${{ tour.price|floatformat:2 }}</span>
+        </a>
+        {% empty %}
+        <p class="text-muted">No tours available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

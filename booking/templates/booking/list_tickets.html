@@ -1,0 +1,17 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="container mt-3  mb-5">
+    <h2>Available Tickets</h2>
+    <div class="list-group">
+        {% for ticket in tickets %}
+        <a href="{% url 'book_ticket' ticket.id %}" class="list-group-item list-group-item-action">
+            {{ ticket.ticket_type|capfirst }}: {{ ticket.number }} from {{ ticket.origin }} to {{ ticket.destination }}
+            <span class="badge bg-secondary float-end">${{ ticket.price|floatformat:2 }}</span>
+        </a>
+        {% empty %}
+        <p class="text-muted">No tickets available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

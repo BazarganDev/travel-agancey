@@ -1,0 +1,27 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Booking Details</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Booking ID: {{ booking.id }}</li>
+        <li class="list-group-item">Ticket Type: {{ booking.ticket.ticket_type|capfirst }}</li>
+        <li class="list-group-item">Ticket Number: {{ booking.ticket.number }}</li>
+        <li class="list-group-item">Traveler Name: {{ booking.user.username }}</li>
+        <li class="list-group-item">Origin: {{ booking.ticket.origin }}</li>
+        <li class="list-group-item">Destination: {{ booking.ticket.destination }}</li>
+        <li class="list-group-item">Departure: {{ booking.ticket.departure_datetime|date:"D, d M Y H:i" }}</li>
+        <li class="list-group-item">Arrival: {{ booking.ticket.arrival_datetime|date:"D, d M Y H:i" }}</li>
+        <li class="list-group-item">Price: ${{ booking.ticket.price|floatformat:2 }}</li>
+        <li class="list-group-item">Seat Number: {{ booking.seat_number }}</li>
+        <li class="list-group-item">Booking Code: {{ booking.booking_code }}</li>
+        {% if not booking.is_cancelled %}
+        <li class="list-group-item">
+            <a href="{% url 'cancel_booking' booking.id %}" class="btn btn-danger">Cancel Booking</a>
+        </li>
+        {% else %}
+        <li class="list-group-item text-danger">Booking Cancelled</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

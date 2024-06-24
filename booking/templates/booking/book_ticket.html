@@ -1,0 +1,20 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Book Ticket</h2>
+    <form action="{% url 'book_ticket' ticket.id %}" method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Confirm your booking</h5>
+                <p class="card-text">
+                    Booking for: {{ ticket.ticket_type|capfirst }} from {{ ticket.origin }} to {{ ticket.destination }}
+                    on {{ ticket.departure_datetime|date:"D, d M Y H:i" }}.
+                </p>
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
